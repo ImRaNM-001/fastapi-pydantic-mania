@@ -13,14 +13,17 @@ class Patient(BaseModel):
             raise ValueError('Patients older than 60 years are required to have an Emergency contact')
         return self
 
-    # primitive-style
-    # @model_validator(mode='after')
-    # @classmethod
-    # def validate_emergency_contact(cls, model: 'Patient') -> 'Patient':
-    #     if model.age > 60 and 'emergency' not in model.contact_details:
-    #         raise ValueError('Patients older than 60 years are required to have an Emergency contact')
-    #     return model
 
+    # primitive-style
+    """
+    @model_validator(mode='after')
+    @classmethod
+    def validate_emergency_contact(cls, model: 'Patient') -> 'Patient':
+        if model.age > 60 and 'emergency' not in model.contact_details:
+            raise ValueError('Patients older than 60 years are required to have an Emergency contact')
+        return model    
+    """
+    
 
 p1_patient: Patient = Patient(name='Ramu',                          # this passes
                               age=68,

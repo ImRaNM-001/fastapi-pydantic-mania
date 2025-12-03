@@ -45,7 +45,7 @@ patient_data: Dict[str, object] = {
 patient_rick: Patient = Patient(**patient_data)             # type: ignore
 
 insert_patient_data(patient_rick)
-print('----------\n')
+print()
 update_patient_data(patient_rick)
 
 

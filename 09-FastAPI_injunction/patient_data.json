@@ -1,0 +1,72 @@
+{
+    "P001": {
+        "name": "Ananya Verma",
+        "city": "Guwahati",
+        "age": 28,
+        "gender": "female",
+        "height": 1.65,
+        "weight": 90.0,
+        "bmi": 33.06,
+        "verdict": "Obese"
+    },
+    "P002": {
+        "height": 2.1,
+        "weight": 78.89,
+        "name": "Raj",
+        "city": "string",
+        "age": 48,
+        "gender": "male",
+        "bmi": 17.89,
+        "verdict": "Underweight"
+    },
+    "P003": {
+        "height": 1.0,
+        "weight": 1.0,
+        "name": "string",
+        "city": "shbaaz",
+        "age": 1,
+        "gender": "others",
+        "bmi": 1.0,
+        "verdict": "Underweight"
+    },
+    "P004": {
+        "name": "Arjun Verma",
+        "city": "Mumbai",
+        "age": 40,
+        "gender": "male",
+        "height": 1.8,
+        "weight": 90.0,
+        "bmi": 27.78,
+        "verdict": "Normal"
+    },
+    "P005": {
+        "name": "Neha Sinha",
+        "city": "Kolkata",
+        "age": 30,
+        "gender": "female",
+        "height": 1.55,
+        "weight": 75,
+        "bmi": 31.22,
+        "verdict": "Obese"
+    },
+    "P0027": {
+        "height": 7.5,
+        "weight": 90.76,
+        "name": "Shalu chalu",
+        "city": "kolkata",
+        "age": 1,
+        "gender": "male",
+        "bmi": 1.61,
+        "verdict": "Underweight"
+    },
+    "P0071": {
+        "height": 1.0,
+        "weight": 1.0,
+        "name": "Josh",
+        "city": "string",
+        "age": 1,
+        "gender": "male",
+        "bmi": 1.0,
+        "verdict": "Underweight"
+    }
+}
