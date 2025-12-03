@@ -1,6 +1,8 @@
-# Task: Create 'Course' model with atributes:
-# 'Modules' - each 'Course' has many 'Modules'
-# and 'Lessons' - each 'Modules' has many 'Lessons'
+"""
+Task: Create 'Course' model with atributes:
+'Modules' - each 'Course' has many 'Modules'
+and 'Lessons' - each 'Modules' has many 'Lessons'
+"""
 
 from pydantic import BaseModel
 from typing import List

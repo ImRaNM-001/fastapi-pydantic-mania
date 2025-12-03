@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, field_serializer, Field
 from datetime import datetime
-from typing import List, Dict, Annotated, Optional
+from typing import List, Dict, Optional
 
 class Address(BaseModel):
     street: str
@@ -53,11 +53,7 @@ print('-------------\n')
 
 user_raju_json = user_raju.model_dump_json()
 print(type(user_raju_json))                  # prints <class 'str'>
-print(user_raju_json)           # prints "created_at":"2025-03-15T14:30:00" in json which is not readable format
-
-
-
-
+print(user_raju_json)                       # prints "created_at":"2025-03-15T14:30:00" in json which is not readable format
 
 
 
