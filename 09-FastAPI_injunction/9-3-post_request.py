@@ -1,7 +1,4 @@
-import json
-from pathlib import Path
-from typing import Annotated, Literal, Dict, Any
-from pydantic import BaseModel, computed_field, Field
+from typing import Dict, Any
 from fastapi.responses import JSONResponse
 from fastapi import FastAPI, HTTPException, status
 from .models import Patient                  # type: ignore
@@ -29,6 +26,5 @@ def create_patient(patient_obj: Patient) -> JSONResponse:
   return JSONResponse(status_code=status.HTTP_201_CREATED,
                       content={
                          'message' : 'Patient added successfully'
-                      },
-                      media_type='application/json')
+                      })
 

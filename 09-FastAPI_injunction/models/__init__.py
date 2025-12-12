@@ -1,1 +1,1 @@
-from .patient_models import Patient, PatientUpdate, UserInputFeatures
+from .patient_models import Patient, PatientUpdate, UserInputFeatures, PatientDB

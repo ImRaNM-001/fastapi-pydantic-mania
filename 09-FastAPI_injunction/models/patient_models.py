@@ -4,6 +4,8 @@ from box import ConfigBox
 from pydantic import BaseModel, computed_field, Field, field_validator
 from fastapi import HTTPException, status
 from ..utils.load_update_data import read_yaml
+from sqlmodel import SQLModel, Field as DBField
+from typing_extensions import Self
 
 user_constants: ConfigBox = read_yaml(Path(__file__).parent.parent / 'user_input_literals.yaml')
 
@@ -107,6 +109,11 @@ class UserInputFeatures(BaseModel):
    occupation: Annotated[str, Field(...,
                                description='Occupation of the user')]
    
+   @field_validator('city')
+   @classmethod
+   def normalize_city_name(cls, value: str) -> str:
+      return value.strip().title()                  # so that "new york" becomes "New York"
+   
    @field_validator('occupation')
    @classmethod
    def validate_occupation(cls, value: str) -> str:
@@ -163,5 +170,38 @@ class UserInputFeatures(BaseModel):
          return 'senior'
    
     
+# for working with SQLModel & DB
+class PatientDB(SQLModel, table=True):
+   __tablename__='patients'
 
+   # NOTE: 
+   # 1- SQLModel sometimes struggles to detect the primary_key=True flag when it's buried inside Annotated combined with Optional in older versions or specific configurations.
+   # 2- Pydantic's "Field" does not understand primary_key=True, so SQLAlchemy would never see a primary key defined, used "Field" from SQLModel
 
+   id: Optional[int] = DBField(default=None,
+                             primary_key=True)     # type: ignore
+   patient_id: str = DBField(index=True,
+                           unique=True)            # type: ignore
+   name: str
+   city: str
+   age: int
+   gender: str
+   height: float
+   weight: float
+
+   @classmethod
+   def from_patient(cls, patient: Patient) -> Self:      # Self denotes 'PatientDB' return type
+      
+      # Convert Pydantic Patient to DB model
+      # 1. Dump all data from patient
+      # 2. Exclude 'id' (because it's 'P007' string, but DB needs 'id' as int)
+      # 3. Pass 'patient_id' explicitly
+      # 4. Unpack the rest (**data) automatically
+      return cls(
+         patient_id = patient.id,
+        **patient.model_dump(exclude={
+                  'id',
+                  'bmi',
+                  'verdict'
+        })
+      )
