@@ -14,6 +14,7 @@ uv add pandas
 uv add joblib
 uv add scikit-learn==1.6.1
 uv add PyYAML python-box
+uv add sqlmodel
 
 > ### to synchronize the project's virtual environment with the dependencies defined in the project's lock file (uv.lock) or pyproject.toml.
 uv sync     

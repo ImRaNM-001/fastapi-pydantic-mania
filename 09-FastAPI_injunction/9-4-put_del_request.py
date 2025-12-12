@@ -44,8 +44,7 @@ def update_patient(patient_id: str, patient_update_obj: PatientUpdate) -> JSONRe
    return JSONResponse(status_code=status.HTTP_200_OK,
                        content={
                           'message' : 'Patient updated successfully'
-                       },
-                       media_type='application/json')
+                       })
 
 
 @app.delete('/delete/{patient_id}')
@@ -64,7 +63,6 @@ def delete_patient(patient_id: str):
    return JSONResponse(status_code=status.HTTP_204_NO_CONTENT,
                        content={
                             'message' : 'Patient deleted successfully'
-                       },
-                       media_type='application/json')
+                       })
     
 

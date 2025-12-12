@@ -18,7 +18,7 @@ Problem with this approach: if no try-except, the 'FileNotFoundError' crashes th
 
 # create a GET route to display a json file
 @app.get('/patients',
-         response_model=None)           # use response_model=None coz 'Response' is not a valid Pydantic type.
+        response_model=None)           # use response_model=None coz 'Response' is not a valid Pydantic type.
 def view_patients() -> Dict[str, object] | Response:
     try:
         with open(json_file_path, 'r') as json_file:

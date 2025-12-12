@@ -56,7 +56,7 @@ def load_model():
 
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
    try:
-      with open(path_to_yaml) as yaml_file:
+      with open(path_to_yaml) as yaml_file:              # defaults to 'r' (read text mode).
          return ConfigBox(yaml.safe_load(yaml_file))
    
    except BoxValueError:
