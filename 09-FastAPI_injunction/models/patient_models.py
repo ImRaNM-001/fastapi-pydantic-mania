@@ -205,3 +205,14 @@ class PatientDB(SQLModel, table=True):
                   'verdict'
         })
       )
+   
+
+# # For creating patients (without auto-generated id)
+# class PatientCreate(SQLModel):
+#     patient_id: str = Field(description='ID of the patient', examples=['P007'])
+#     name: str = Field(min_length=2, max_length=50)
+#     city: str
+#     age: int = Field(gt=0, lt=120)
+#     gender: str
+#     height: float = Field(gt=0)
+#     weight: float = Field(gt=0)

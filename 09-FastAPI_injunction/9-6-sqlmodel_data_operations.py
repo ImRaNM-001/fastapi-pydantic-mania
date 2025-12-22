@@ -12,7 +12,7 @@ engine = create_engine('sqlite:///patient_database.db',
 SQLModel.metadata.create_all(engine)
 
 # Dependency: Get the session
-def get_session() -> Generator[Session, Any, None]:    
+def get_session() -> Generator[Session, Any, None]:     # Generator[YieldType, SendType, ReturnType]
 
     with Session(engine) as session:
         yield session
@@ -43,7 +43,7 @@ def get_patient_by_id(patient_id: str,
     patient_info: PatientDB | None = session.exec(
         select(PatientDB)
         .where(PatientDB.patient_id == patient_id)
-    ).first()                                       # .first() returns the 1st matching record or None if the table is empty/no match found.
+    ).first()                                       # .first() or .one() returns the 1st matching record or None if the table is empty/no match found.
 
     if not patient_info:            # patient not found
         raise HTTPException(

@@ -37,13 +37,13 @@ def add_transaction(new_transaction: AccountTransaction) -> AccountTransaction:
 def update_transaction(acc_id: int,
                        updated_transaction: AccountTransaction) -> AccountTransaction:
     
-    for index, val in enumerate(transactions):
+    for index, val in enumerate(transactions):      # index like 0,1 while val is obj_value at that index
         if val.account_id == acc_id:
             transactions[index] = updated_transaction
-            return updated_transaction
+            return updated_transaction                   # the `return` immediately exits the route handler, so execution would never reach the raise HTTPException(...) line; The HTTPException is only hit when the condition is False
             
     # If no matching account_id found, raise 404
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,         
                         detail=f'Transaction with account_id {acc_id} not found')
 
 

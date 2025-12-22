@@ -41,10 +41,12 @@ def get_patient_by_id(patient_id: Annotated[str, PathParam(...,
     
     # better ready prod code
     if patient_id in patient_data:
-         return patient_data[patient_id]  
+         return patient_data[patient_id]        # the `return` immediately exits the route handler, so execution would never reach the raise HTTPException(...) line; The HTTPException is only hit when the condition is False (i.e., the patient_id key is not present in patient_data).
     
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail=f'Patient {patient_id} not found')
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f'Patient {patient_id} not found'
+    )
      
 
     """
